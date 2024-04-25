@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -28,10 +29,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.myapplication.R
+import com.example.myapplication.navigation.AppScreens
 
 @Composable
-fun Welcome(){
+fun Welcome(navController: NavController){
     Column(modifier = Modifier
         .background(colorResource(id = R.color.background))
         .fillMaxSize(),
@@ -51,12 +54,14 @@ fun Welcome(){
             painter = painterResource(id = R.drawable.read_share),
             contentDescription = "Read Share",
             modifier = Modifier.fillMaxWidth()
+                .padding(horizontal = 20.dp)
+                .alpha(0.8f)
         )
         Column(verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally){
 
 
-        Button(onClick = { /*TODO*/ },
+        Button(onClick = { navController.navigate(AppScreens.Login.route)},
             modifier = Modifier
                 .padding(20.dp)
                 .width(230.dp)
@@ -69,13 +74,15 @@ fun Welcome(){
 
         }
         //Spacer(modifier = Modifier.height(20.dp))
-    Row {
+    Row(modifier= Modifier.padding(horizontal = 10.dp)
+        .fillMaxWidth(),
+        horizontalArrangement = Arrangement.Center) {
         Text(text = "¿No tienes una cuenta?",
-            fontSize = 16.sp,
+            fontSize = 15.sp,
             color = colorResource(id = R.color.black))
-        Spacer(modifier = Modifier.width(10.dp))
-        LinkText {
-
+        Spacer(modifier = Modifier.width(8.dp))
+        LinkText (txt = "Registrate"){
+navController.navigate(AppScreens.Sigin.route)
         }
     }
 
@@ -84,10 +91,11 @@ fun Welcome(){
     }
 }
 @Composable
-fun LinkText(onClick: () -> Unit) {
+fun LinkText( txt:String,
+    onClick: () -> Unit) {
     val text = AnnotatedString.Builder()
         .apply {
-            append("Regístrate")
+            append(txt)
             addStyle(
                 style = SpanStyle(
                     color = Color.Blue,
@@ -112,8 +120,3 @@ fun LinkText(onClick: () -> Unit) {
     )
 }
 
-@Composable
-@Preview
-fun Pwelcome(){
-    Welcome()
-}
