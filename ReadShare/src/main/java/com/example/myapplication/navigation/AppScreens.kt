@@ -5,5 +5,7 @@ sealed class AppScreens(val route: String) {
     object Welcome : AppScreens("Welcome")
     object Login : AppScreens("Login")
     object Sigin : AppScreens("Sigin")
+    object Main : AppScreens("Main")
 
+    object Upload : AppScreens("UploadBook")
 }

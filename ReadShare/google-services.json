@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "923941890849",
+    "project_id": "readshare-ad73d",
+    "storage_bucket": "readshare-ad73d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923941890849:android:ab90ddb2323089b78b2c60",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM1_f0C5krYmbe-MM5dCYA8usQFy9hJC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
